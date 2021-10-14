@@ -1,0 +1,44 @@
+{
+  "name": "storybook-custom-event-broadcaster",
+  "version": "0.0.9",
+  "description": "storybook addon for broadcasting custom events",
+  "main": "dist/preset.js",
+  "watch": {
+    "build": "{src,test}/**/*.js"
+  },
+  "scripts": {
+    "watch_build": "npm-watch build",
+    "build": "babel ./src --out-dir ./dist"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derKuba/storybook-custom-event-broadcaster.git"
+  },
+  "keywords": [
+    "storybook",
+    "addon",
+    "custom-events"
+  ],
+  "author": "kuba@derkuba.de",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derKuba/storybook-custom-event-broadcaster/issues"
+  },
+  "homepage": "https://github.com/derKuba/storybook-custom-event-broadcaster#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "npm-watch": "^0.11.0"
+  },
+  "peerDependencies": {
+    "@storybook/addon-docs": "^6.3.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
