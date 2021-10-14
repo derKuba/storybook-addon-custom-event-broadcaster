@@ -1,21 +1,9 @@
 import React from "react";
-import { styled } from "@storybook/theming";
 
-import {
-  Button,
-  TableWrapper,
-  ResetWrapper,
-  Icons,
-} from "@storybook/components";
+import { TableWrapper, ResetWrapper, Icons } from "@storybook/components";
 
-const FlexedBox = styled.div({
-  display: "flex",
-});
-
-const IconBox = styled.div({
-  width: "25px",
-  height: "25px",
-});
+import CustomEventRow from "../custom-event-row/custom-event-row";
+import { FlexedBox, IconBox } from "../../styled-components/boxes";
 
 const CustomEventPanel = () => {
   const args = {};
@@ -31,32 +19,17 @@ const CustomEventPanel = () => {
           </tr>
         </thead>
         <tbody>
+          <CustomEventRow />
           <tr>
             <td>
-              <input type="text"></input>
-            </td>
-            <td>
-              <input type="text"></input>
-            </td>
-            <td>
+              hello
               <FlexedBox>
                 <IconBox>
                   <Icons icon={"add"} />
                 </IconBox>
-                <span>Add Selektor</span>
+                <span>Add new Line</span>
               </FlexedBox>
             </td>
-            <td>
-              <Button primary>FIRE</Button>
-            </td>
-          </tr>
-          <tr>
-            <FlexedBox>
-              <IconBox>
-                <Icons icon={"add"} />
-              </IconBox>
-              <span>Add new Line</span>
-            </FlexedBox>
           </tr>
         </tbody>
       </TableWrapper>

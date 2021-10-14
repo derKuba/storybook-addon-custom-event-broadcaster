@@ -4,7 +4,14 @@
   "description": "storybook addon for broadcasting custom events",
   "main": "dist/preset.js",
   "watch": {
-    "build": "{src,test}/**/*.js"
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": [
+        "js,jsx"
+      ]
+    }
   },
   "scripts": {
     "watch_build": "npm-watch build",
