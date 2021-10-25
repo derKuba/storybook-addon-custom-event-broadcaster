@@ -31,27 +31,84 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function () {
+var fireEvent = function fireEvent(eventName, eventData) {
+  var selector = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+  var data = eventData ? eventData : null;
+
+  try {
+    var parsedData = JSON.parse(JSON.stringify(data));
+
+    if (selector.length > 0) {
+      document.getElementById("storybook-preview-iframe") // the preview is inside a iframe
+      .contentWindow.document.querySelector(selector).dispatchEvent(new CustomEvent(eventName, parsedData));
+    } else {
+      document.getElementById("storybook-preview-iframe") // the preview is inside a iframe
+      .contentWindow.document.dispatchEvent(new CustomEvent(eventName, parsedData));
+    }
+  } catch (error) {
+    console.log("Selector not found", error);
+  }
+};
+
+var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
+  var _ref$selectorDefault = _ref.selectorDefault,
+      selectorDefault = _ref$selectorDefault === void 0 ? "" : _ref$selectorDefault,
+      _ref$eventNameDefault = _ref.eventNameDefault,
+      eventNameDefault = _ref$eventNameDefault === void 0 ? "" : _ref$eventNameDefault,
+      _ref$eventDataDefault = _ref.eventDataDefault,
+      eventDataDefault = _ref$eventDataDefault === void 0 ? "" : _ref$eventDataDefault;
+
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       displaySelector = _useState2[0],
       setDisplaySelector = _useState2[1];
 
+  var _useState3 = (0, _react.useState)(selectorDefault),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selector = _useState4[0],
+      setSelector = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(eventNameDefault),
+      _useState6 = _slicedToArray(_useState5, 2),
+      eventName = _useState6[0],
+      setEventName = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(eventDataDefault),
+      _useState8 = _slicedToArray(_useState7, 2),
+      eventData = _useState8[0],
+      setEventData = _useState8[1];
+
   var displaySelectInput = function displaySelectInput() {
     setDisplaySelector(true);
   };
 
+  var parsedData = null;
+
+  try {
+    parsedData = eventData ? JSON.stringify(eventData) : "";
+  } catch (_) {
+    parsedData = "INVALID JSON";
+  }
+
   return /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledInput, {
-    type: "text"
-  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, null)), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
+    type: "text",
+    value: eventName
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+    value: parsedData
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
     key: "iconBox"
   }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add",
     onClick: displaySelectInput
   })), /*#__PURE__*/_react["default"].createElement("span", {
     key: "selectorText"
-  }, "Add Selektor")] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, null))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
-    primary: true
+  }, "Add Selektor")] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+    value: selector
+  }))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
+    primary: true,
+    onClick: function onClick() {
+      return fireEvent(eventName, eventData, selector);
+    }
   }, "FIRE")));
 });
 var _default = CustomEventRow;

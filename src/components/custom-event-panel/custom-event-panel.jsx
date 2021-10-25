@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParameter } from "@storybook/api";
 
 import { TableWrapper, ResetWrapper, Icons } from "@storybook/components";
 
 import CustomEventRow from "../custom-event-row/custom-event-row";
 import { FlexedBox, IconBox } from "../../styled-components/boxes";
 
+const renderTableRows = (_parameterData) => {
+  if (_parameterData !== null && _parameterData.data.length > 0) {
+    const rows = _parameterData.data.map((row, index) => (
+      <CustomEventRow
+        key={`${row.selector}__${index}`}
+        selectorDefault={row.selector}
+        eventNameDefault={row.eventName}
+        eventDataDefault={row.eventData}
+      />
+    ));
+    return rows;
+  }
+
+  return <CustomEventRow />;
+};
+
 const CustomEventPanel = () => {
-  const args = {};
+  const customEventPanelParameterData = useParameter("customEventPanel", null);
+
+  const [additionalRows, setAdditionalRows] = useState(0);
+
+  const addNewRow = () => {
+    const count = additionalRows + 1;
+    setAdditionalRows(count);
+  };
+
   return (
     <ResetWrapper>
       <TableWrapper inAddonPanel>
@@ -19,11 +44,13 @@ const CustomEventPanel = () => {
           </tr>
         </thead>
         <tbody>
-          <CustomEventRow />
+          {renderTableRows(customEventPanelParameterData)}
+          {[...Array(additionalRows).keys()].map((item, index) => (
+            <CustomEventRow key={`addRow_${index + 1}`} />
+          ))}
           <tr>
             <td>
-              hello
-              <FlexedBox>
+              <FlexedBox onClick={addNewRow}>
                 <IconBox>
                   <Icons icon={"add"} />
                 </IconBox>
