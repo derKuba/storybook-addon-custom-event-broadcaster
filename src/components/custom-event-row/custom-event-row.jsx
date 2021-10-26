@@ -1,37 +1,38 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo } from 'react';
+import PropTypes from 'prop-types';
 
-import { Button, Icons } from "@storybook/components";
+import { Button, Icons } from '@storybook/components';
 
-import { FlexedBox, IconBox } from "../../styled-components/boxes";
+import { FlexedBox, IconBox } from '../../styled-components/boxes';
 
-import { StyledInput, StyledTextarea } from "../../styled-components/input";
+import { StyledInput, StyledTextarea } from '../../styled-components/input';
 
-const fireEvent = (eventName, eventData, selector = "") => {
-  const data = eventData ? eventData : null;
+const fireEvent = (eventName, eventData, selector = '') => {
+  const data = eventData || null;
 
   try {
     const parsedData = JSON.parse(JSON.stringify(data));
     if (selector.length > 0) {
       document
-        .getElementById("storybook-preview-iframe")
+        .getElementById('storybook-preview-iframe')
         // the preview is inside a iframe
         .contentWindow.document.querySelector(selector)
         .dispatchEvent(new CustomEvent(eventName, parsedData));
     } else {
       document
-        .getElementById("storybook-preview-iframe")
+        .getElementById('storybook-preview-iframe')
         // the preview is inside a iframe
         .contentWindow.document.dispatchEvent(
-          new CustomEvent(eventName, parsedData)
+          new CustomEvent(eventName, parsedData),
         );
     }
   } catch (error) {
-    console.log("Selector not found", error);
+    console.log('Fire not successfull ', error); // eslint-disable-line no-console
   }
 };
 
 const CustomEventRow = memo(
-  ({ selectorDefault = "", eventNameDefault = "", eventDataDefault = "" }) => {
+  ({ selectorDefault = '', eventNameDefault = '', eventDataDefault = '' }) => {
     const [displaySelector, setDisplaySelector] = useState(false);
     const [selector, setSelector] = useState(selectorDefault);
     const [eventName, setEventName] = useState(eventNameDefault);
@@ -43,30 +44,52 @@ const CustomEventRow = memo(
 
     let parsedData = null;
     try {
-      parsedData = eventData ? JSON.stringify(eventData) : "";
+      parsedData = eventDataDefault ? JSON.stringify(eventData) : '';
     } catch (_) {
-      parsedData = "INVALID JSON";
+      parsedData = 'INVALID JSON';
     }
+
+    const handleSelectorChange = (event) => {
+      setSelector(event.target.value);
+    };
+
+    const handleEventNameChange = (event) => {
+      setEventName(event.target.value);
+    };
+
+    const handleDataChange = (event) => {
+      setEventData(event.target.value);
+    };
 
     return (
       <tr>
         <td>
-          <StyledInput type="text" value={eventName}></StyledInput>
+          <StyledInput
+            type="text"
+            value={eventName}
+            onChange={handleEventNameChange}
+          />
         </td>
         <td>
-          <StyledTextarea value={parsedData}></StyledTextarea>
+          <StyledTextarea
+            value={parsedData || eventData}
+            onChange={handleDataChange}
+          />
         </td>
         <td>
           <FlexedBox>
             {displaySelector === false && selector.length === 0 ? (
               [
                 <IconBox key="iconBox">
-                  <Icons icon={"add"} onClick={displaySelectInput} />
+                  <Icons icon="add" onClick={displaySelectInput} />
                 </IconBox>,
                 <span key="selectorText">Add Selektor</span>,
               ]
             ) : (
-              <StyledTextarea value={selector}></StyledTextarea>
+              <StyledTextarea
+                value={selector}
+                onChange={handleSelectorChange}
+              />
             )}
           </FlexedBox>
         </td>
@@ -75,12 +98,24 @@ const CustomEventRow = memo(
             primary
             onClick={() => fireEvent(eventName, eventData, selector)}
           >
-            FIRE
+            send
           </Button>
         </td>
       </tr>
     );
-  }
+  },
 );
+
+CustomEventRow.propTypes = {
+  selectorDefault: PropTypes.string,
+  eventNameDefault: PropTypes.string,
+  eventDataDefault: PropTypes.string,
+};
+
+CustomEventRow.defaultProps = {
+  selectorDefault: '',
+  eventNameDefault: '',
+  eventDataDefault: '',
+};
 
 export default CustomEventRow;

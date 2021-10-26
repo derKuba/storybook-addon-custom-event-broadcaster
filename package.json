@@ -15,7 +15,9 @@
   },
   "scripts": {
     "watch_build": "npm-watch build",
-    "build": "babel ./src --out-dir ./dist"
+    "lint": "eslint src --ext .js,.jsx --fix",
+    "build": "babel ./src --out-dir ./dist",
+    "test": "jest --coverage"
   },
   "files": [
     "dist/**/*",
@@ -41,11 +43,23 @@
     "@babel/cli": "^7.15.7",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.3.1",
     "npm-watch": "^0.11.0"
   },
   "peerDependencies": {
     "@storybook/addon-docs": "^6.3.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupTest.js"
+    ]
   }
 }

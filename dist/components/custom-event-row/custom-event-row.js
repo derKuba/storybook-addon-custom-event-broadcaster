@@ -46,7 +46,7 @@ var fireEvent = function fireEvent(eventName, eventData) {
       .contentWindow.document.dispatchEvent(new CustomEvent(eventName, parsedData));
     }
   } catch (error) {
-    console.log("Selector not found", error);
+    console.log("Fire not successfull ", error);
   }
 };
 
@@ -85,16 +85,30 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
   var parsedData = null;
 
   try {
-    parsedData = eventData ? JSON.stringify(eventData) : "";
+    parsedData = eventDataDefault ? JSON.stringify(eventData) : "";
   } catch (_) {
     parsedData = "INVALID JSON";
   }
 
+  var handleSelectorChange = function handleSelectorChange(event) {
+    setSelector(event.target.value);
+  };
+
+  var handleEventNameChange = function handleEventNameChange(event) {
+    setEventName(event.target.value);
+  };
+
+  var handleDataChange = function handleDataChange(event) {
+    setEventData(event.target.value);
+  };
+
   return /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledInput, {
     type: "text",
-    value: eventName
+    value: eventName,
+    onChange: handleEventNameChange
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
-    value: parsedData
+    value: parsedData ? parsedData : eventData,
+    onChange: handleDataChange
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
     key: "iconBox"
   }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
@@ -103,7 +117,8 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
   })), /*#__PURE__*/_react["default"].createElement("span", {
     key: "selectorText"
   }, "Add Selektor")] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
-    value: selector
+    value: selector,
+    onChange: handleSelectorChange
   }))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
     primary: true,
     onClick: function onClick() {
