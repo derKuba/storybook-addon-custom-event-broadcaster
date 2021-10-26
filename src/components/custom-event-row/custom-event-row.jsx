@@ -1,38 +1,38 @@
-import React, { useState, memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, memo } from "react";
+import PropTypes from "prop-types";
 
-import { Button, Icons } from '@storybook/components';
+import { Button, Icons } from "@storybook/components";
 
-import { FlexedBox, IconBox } from '../../styled-components/boxes';
+import { FlexedBox, IconBox } from "../../styled-components/boxes";
 
-import { StyledInput, StyledTextarea } from '../../styled-components/input';
+import { StyledInput, StyledTextarea } from "../../styled-components/input";
 
-const fireEvent = (eventName, eventData, selector = '') => {
+const fireEvent = (eventName, eventData, selector = "") => {
   const data = eventData || null;
 
   try {
     const parsedData = JSON.parse(JSON.stringify(data));
+
+    const storyBookIframeDocument = document.getElementById( // the preview is inside a iframe
+      "storybook-preview-iframe"
+    ).contentWindow.document;
+
     if (selector.length > 0) {
-      document
-        .getElementById('storybook-preview-iframe')
-        // the preview is inside a iframe
-        .contentWindow.document.querySelector(selector)
+      storyBookIframeDocument
+        .querySelector(selector)
         .dispatchEvent(new CustomEvent(eventName, parsedData));
     } else {
-      document
-        .getElementById('storybook-preview-iframe')
-        // the preview is inside a iframe
-        .contentWindow.document.dispatchEvent(
-          new CustomEvent(eventName, parsedData),
-        );
+      storyBookIframeDocument.dispatchEvent(
+        new CustomEvent(eventName, parsedData)
+      );
     }
   } catch (error) {
-    console.log('Fire not successfull ', error); // eslint-disable-line no-console
+    console.log("Fire not successfull ", error); // eslint-disable-line no-console
   }
 };
 
 const CustomEventRow = memo(
-  ({ selectorDefault = '', eventNameDefault = '', eventDataDefault = '' }) => {
+  ({ selectorDefault = "", eventNameDefault = "", eventDataDefault = "" }) => {
     const [displaySelector, setDisplaySelector] = useState(false);
     const [selector, setSelector] = useState(selectorDefault);
     const [eventName, setEventName] = useState(eventNameDefault);
@@ -44,9 +44,9 @@ const CustomEventRow = memo(
 
     let parsedData = null;
     try {
-      parsedData = eventDataDefault ? JSON.stringify(eventData) : '';
+      parsedData = eventDataDefault ? JSON.stringify(eventData) : "";
     } catch (_) {
-      parsedData = 'INVALID JSON';
+      parsedData = "INVALID JSON";
     }
 
     const handleSelectorChange = (event) => {
@@ -103,7 +103,7 @@ const CustomEventRow = memo(
         </td>
       </tr>
     );
-  },
+  }
 );
 
 CustomEventRow.propTypes = {
@@ -113,9 +113,9 @@ CustomEventRow.propTypes = {
 };
 
 CustomEventRow.defaultProps = {
-  selectorDefault: '',
-  eventNameDefault: '',
-  eventDataDefault: '',
+  selectorDefault: "",
+  eventNameDefault: "",
+  eventDataDefault: "",
 };
 
 export default CustomEventRow;

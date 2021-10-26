@@ -9,11 +9,15 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _components = require("@storybook/components");
 
 var _boxes = require("../../styled-components/boxes");
 
 var _input = require("../../styled-components/input");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -33,20 +37,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var fireEvent = function fireEvent(eventName, eventData) {
   var selector = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-  var data = eventData ? eventData : null;
+  var data = eventData || null;
 
   try {
     var parsedData = JSON.parse(JSON.stringify(data));
+    var storyBookIframeDocument = document.getElementById( // the preview is inside a iframe
+    "storybook-preview-iframe").contentWindow.document;
 
     if (selector.length > 0) {
-      document.getElementById("storybook-preview-iframe") // the preview is inside a iframe
-      .contentWindow.document.querySelector(selector).dispatchEvent(new CustomEvent(eventName, parsedData));
+      storyBookIframeDocument.querySelector(selector).dispatchEvent(new CustomEvent(eventName, parsedData));
     } else {
-      document.getElementById("storybook-preview-iframe") // the preview is inside a iframe
-      .contentWindow.document.dispatchEvent(new CustomEvent(eventName, parsedData));
+      storyBookIframeDocument.dispatchEvent(new CustomEvent(eventName, parsedData));
     }
   } catch (error) {
-    console.log("Fire not successfull ", error);
+    console.log("Fire not successfull ", error); // eslint-disable-line no-console
   }
 };
 
@@ -107,7 +111,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     value: eventName,
     onChange: handleEventNameChange
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
-    value: parsedData ? parsedData : eventData,
+    value: parsedData || eventData,
     onChange: handleDataChange
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
     key: "iconBox"
@@ -124,7 +128,17 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     onClick: function onClick() {
       return fireEvent(eventName, eventData, selector);
     }
-  }, "FIRE")));
+  }, "send")));
 });
+CustomEventRow.propTypes = {
+  selectorDefault: _propTypes["default"].string,
+  eventNameDefault: _propTypes["default"].string,
+  eventDataDefault: _propTypes["default"].string
+};
+CustomEventRow.defaultProps = {
+  selectorDefault: "",
+  eventNameDefault: "",
+  eventDataDefault: ""
+};
 var _default = CustomEventRow;
 exports["default"] = _default;

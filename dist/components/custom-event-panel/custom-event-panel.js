@@ -47,7 +47,8 @@ var renderTableRows = function renderTableRows(_parameterData) {
   if (_parameterData !== null && _parameterData.data.length > 0) {
     var rows = _parameterData.data.map(function (row, index) {
       return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], {
-        key: "".concat(row.selector, "__").concat(index),
+        key: "".concat(row.selector, "__").concat(index) // eslint-disable-line react/no-array-index-key
+        ,
         selectorDefault: row.selector,
         eventNameDefault: row.eventName,
         eventDataDefault: row.eventData
@@ -61,7 +62,7 @@ var renderTableRows = function renderTableRows(_parameterData) {
 };
 
 var CustomEventPanel = function CustomEventPanel() {
-  var customEventPanelParameterData = (0, _api.useParameter)("customEventPanel", null);
+  var customEventPanelParameterData = (0, _api.useParameter)('customEventPanel', null);
 
   var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -75,9 +76,10 @@ var CustomEventPanel = function CustomEventPanel() {
 
   return /*#__PURE__*/_react["default"].createElement(_components.ResetWrapper, null, /*#__PURE__*/_react["default"].createElement(_components.TableWrapper, {
     inAddonPanel: true
-  }, /*#__PURE__*/_react["default"].createElement("thead", null, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("th", null, "EventName"), /*#__PURE__*/_react["default"].createElement("th", null, "Data"), /*#__PURE__*/_react["default"].createElement("th", null, "(opt.) Selector"), /*#__PURE__*/_react["default"].createElement("th", null))), /*#__PURE__*/_react["default"].createElement("tbody", null, renderTableRows(customEventPanelParameterData), _toConsumableArray(Array(additionalRows).keys()).map(function (item, index) {
+  }, /*#__PURE__*/_react["default"].createElement("thead", null, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("th", null, "EventName"), /*#__PURE__*/_react["default"].createElement("th", null, "Data"), /*#__PURE__*/_react["default"].createElement("th", null, "(opt.) Selector"), /*#__PURE__*/_react["default"].createElement("th", null, " "))), /*#__PURE__*/_react["default"].createElement("tbody", null, renderTableRows(customEventPanelParameterData), _toConsumableArray(Array(additionalRows).keys()).map(function (item, index) {
     return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], {
-      key: "addRow_".concat(index + 1)
+      key: "addRow_".concat(index + 1) // eslint-disable-line react/no-array-index-key
+
     });
   }), /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, {
     onClick: addNewRow
