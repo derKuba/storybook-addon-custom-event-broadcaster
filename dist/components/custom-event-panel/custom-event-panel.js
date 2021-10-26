@@ -44,8 +44,8 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var renderTableRows = function renderTableRows(_parameterData) {
-  if (_parameterData !== null && _parameterData.data.length > 0) {
-    var rows = _parameterData.data.map(function (row, index) {
+  if (_parameterData !== null && _parameterData.length > 0) {
+    var rows = _parameterData.map(function (row, index) {
       return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], {
         key: "".concat(row.selector, "__").concat(index) // eslint-disable-line react/no-array-index-key
         ,
@@ -62,7 +62,7 @@ var renderTableRows = function renderTableRows(_parameterData) {
 };
 
 var CustomEventPanel = function CustomEventPanel() {
-  var customEventPanelParameterData = (0, _api.useParameter)('customEventPanel', null);
+  var customEventPanelParameterData = (0, _api.useParameter)("customEventPanel", null);
 
   var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),

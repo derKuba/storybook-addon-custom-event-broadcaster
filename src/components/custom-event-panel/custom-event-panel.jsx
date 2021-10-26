@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useParameter } from '@storybook/api';
+import React, { useState } from "react";
+import { useParameter } from "@storybook/api";
 
-import { TableWrapper, ResetWrapper, Icons } from '@storybook/components';
+import { TableWrapper, ResetWrapper, Icons } from "@storybook/components";
 
-import CustomEventRow from '../custom-event-row/custom-event-row';
-import { FlexedBox, IconBox } from '../../styled-components/boxes';
+import CustomEventRow from "../custom-event-row/custom-event-row";
+import { FlexedBox, IconBox } from "../../styled-components/boxes";
 
 const renderTableRows = (_parameterData) => {
-  if (_parameterData !== null && _parameterData.data.length > 0) {
-    const rows = _parameterData.data.map((row, index) => (
+  if (_parameterData !== null && _parameterData.length > 0) {
+    const rows = _parameterData.map((row, index) => (
       <CustomEventRow
         key={`${row.selector}__${index}`} // eslint-disable-line react/no-array-index-key
         selectorDefault={row.selector}
@@ -23,7 +23,7 @@ const renderTableRows = (_parameterData) => {
 };
 
 const CustomEventPanel = () => {
-  const customEventPanelParameterData = useParameter('customEventPanel', null);
+  const customEventPanelParameterData = useParameter("customEventPanel", null);
 
   const [additionalRows, setAdditionalRows] = useState(0);
 

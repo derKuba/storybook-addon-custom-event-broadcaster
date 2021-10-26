@@ -1,8 +1,31 @@
 {
-  "name": "storybook-custom-event-broadcaster",
-  "version": "0.0.9",
+  "name": "storybook-addon-custom-event-broadcaster",
+  "version": "1.0.0",
   "description": "storybook addon for broadcasting custom events",
   "main": "dist/preset.js",
+  "keywords": [
+    "storybook-addons",
+    "custom-events",
+    "debug"
+  ],
+  "author": {
+    "name": "Jacob Pawlik",
+    "email": "kuba@derkuba.de",
+    "url": "http://derkuba.de"
+  },
+  "contributors": [
+    "Michael Mayer <michael_boese@hotmail.de>",
+    "Barthomoläus Kaminski <bart@tranquille.de>"
+  ],
+  "storybook": {
+    "displayName": "Custom Events Broadcaster",
+    "supportedFrameworks": [
+      "react",
+      "angular",
+      "stenciljs"
+    ],
+    "icon": ""
+  },
   "watch": {
     "build": {
       "patterns": [
@@ -28,12 +51,6 @@
     "type": "git",
     "url": "git+https://github.com/derKuba/storybook-custom-event-broadcaster.git"
   },
-  "keywords": [
-    "storybook",
-    "addon",
-    "custom-events"
-  ],
-  "author": "kuba@derkuba.de",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/derKuba/storybook-custom-event-broadcaster/issues"
