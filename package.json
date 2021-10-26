@@ -37,7 +37,7 @@
     }
   },
   "scripts": {
-    "watch_build": "nodemon --ignore dist --exec npm run build",
+    "dev": "nodemon --ignore dist --exec npm run build",
     "lint": "eslint src --ext .js,.jsx --fix",
     "build": "babel ./src --out-dir ./dist",
     "test": "jest --coverage"
