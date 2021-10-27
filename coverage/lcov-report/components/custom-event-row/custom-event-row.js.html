@@ -1,0 +1,509 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for components/custom-event-row/custom-event-row.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/custom-event-row</a> custom-event-row.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">29% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>38/131</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">25.89% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>29/112</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">30% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>6/20</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">25% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>17/68</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+function _typeof(obj) { "@babel/helpers - typeof"; <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Symbol === "function" &amp;&amp; typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { <span class="cstat-no" title="statement not covered" >_typeof = function <span class="fstat-no" title="function not covered" >_typeof(</span>obj) { <span class="cstat-no" title="statement not covered" >return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; obj.constructor === Symbol &amp;&amp; obj !== Symbol.prototype ? "symbol" : typeof obj; </span>}; </span>} return _typeof(obj); }
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+&nbsp;
+var _react = _interopRequireWildcard(require("react"));
+&nbsp;
+var _propTypes = _interopRequireDefault(require("prop-types"));
+&nbsp;
+var _components = require("@storybook/components");
+&nbsp;
+var _boxes = require("../../styled-components/boxes");
+&nbsp;
+var _input = require("../../styled-components/input");
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-no" title="branch not covered" >obj </span>: { "default": obj }; }
+&nbsp;
+function _getRequireWildcardCache(nodeInterop) { <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof WeakMap !== "function") <span class="cstat-no" title="statement not covered" >return null; </span>var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? <span class="branch-0 cbranch-no" title="branch not covered" >cacheNodeInterop </span>: cacheBabelInterop; })(nodeInterop); }
+&nbsp;
+function _interopRequireWildcard(obj, nodeInterop) { <span class="missing-if-branch" title="if path not taken" >I</span>if (!nodeInterop &amp;&amp; obj &amp;&amp; obj.__esModule) { <span class="cstat-no" title="statement not covered" >return obj; </span>} <span class="missing-if-branch" title="if path not taken" >I</span>if (obj === null || _typeof(obj) !== "object" &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >typeof obj !== "function")</span> { <span class="cstat-no" title="statement not covered" >return { "default": obj }; </span>} var cache = _getRequireWildcardCache(nodeInterop); <span class="missing-if-branch" title="if path not taken" >I</span>if (cache &amp;&amp; cache.has(obj)) { <span class="cstat-no" title="statement not covered" >return cache.get(obj); </span>} var newObj = {}; var hasPropertyDescriptor = Object.defineProperty &amp;&amp; Object.getOwnPropertyDescriptor; for (var key in obj) { <span class="missing-if-branch" title="else path not taken" >E</span>if (key !== "default" &amp;&amp; Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : <span class="branch-1 cbranch-no" title="branch not covered" >null;</span> <span class="missing-if-branch" title="if path not taken" >I</span>if (desc &amp;&amp; (desc.get || desc.set)) { <span class="cstat-no" title="statement not covered" >Object.defineProperty(newObj, key, desc); </span>} else { newObj[key] = obj[key]; } } } newObj["default"] = obj; <span class="missing-if-branch" title="else path not taken" >E</span>if (cache) { cache.set(obj, newObj); } return newObj; }
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_slicedToArray(</span>arr, i) { <span class="cstat-no" title="statement not covered" >return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); </span>}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_nonIterableRest(</span>) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); </span>}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_unsupportedIterableToArray(</span>o, minLen) { <span class="cstat-no" title="statement not covered" >if (!o) <span class="cstat-no" title="statement not covered" >return; <span class="cstat-no" title="statement not covered" ></span></span>if (typeof o === "string") <span class="cstat-no" title="statement not covered" >return _arrayLikeToArray(o, minLen); </span></span>var n = <span class="cstat-no" title="statement not covered" >Object.prototype.toString.call(o).slice(8, -1);</span> <span class="cstat-no" title="statement not covered" >if (n === "Object" &amp;&amp; o.constructor) <span class="cstat-no" title="statement not covered" >n = o.constructor.name; <span class="cstat-no" title="statement not covered" ></span></span>if (n === "Map" || n === "Set") <span class="cstat-no" title="statement not covered" >return Array.from(o); <span class="cstat-no" title="statement not covered" ></span></span>if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) <span class="cstat-no" title="statement not covered" >return _arrayLikeToArray(o, minLen); </span></span>}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_arrayLikeToArray(</span>arr, len) { <span class="cstat-no" title="statement not covered" >if (len == null || len &gt; arr.length) <span class="cstat-no" title="statement not covered" >len = arr.length; <span class="cstat-no" title="statement not covered" ></span></span>for (var i = <span class="cstat-no" title="statement not covered" >0,</span> arr2 = <span class="cstat-no" title="statement not covered" >new Array(len);</span> i &lt; len; i++) { <span class="cstat-no" title="statement not covered" >arr2[i] = arr[i]; </span>} <span class="cstat-no" title="statement not covered" ></span>return arr2; </span>}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_iterableToArrayLimit(</span>arr, i) { var _i = <span class="cstat-no" title="statement not covered" >arr == null ? null : typeof Symbol !== "undefined" &amp;&amp; arr[Symbol.iterator] || arr["@@iterator"];</span> <span class="cstat-no" title="statement not covered" >if (_i == null) <span class="cstat-no" title="statement not covered" >return; </span></span>var _arr = <span class="cstat-no" title="statement not covered" >[];</span> var _n = <span class="cstat-no" title="statement not covered" >true;</span> var _d = <span class="cstat-no" title="statement not covered" >false;</span> var _s, _e; <span class="cstat-no" title="statement not covered" >try { <span class="cstat-no" title="statement not covered" >for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { <span class="cstat-no" title="statement not covered" >_arr.push(_s.value); <span class="cstat-no" title="statement not covered" ></span>if (i &amp;&amp; _arr.length === i) <span class="cstat-no" title="statement not covered" >break; </span></span>} </span>} catch (err) { <span class="cstat-no" title="statement not covered" >_d = true; <span class="cstat-no" title="statement not covered" ></span>_e = err; </span>} finally { <span class="cstat-no" title="statement not covered" >try { <span class="cstat-no" title="statement not covered" >if (!_n &amp;&amp; _i["return"] != null) <span class="cstat-no" title="statement not covered" >_i["return"](); </span></span>} finally { <span class="cstat-no" title="statement not covered" >if (_d) <span class="cstat-no" title="statement not covered" >throw _e; </span></span>} </span>} <span class="cstat-no" title="statement not covered" ></span>return _arr; </span>}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_arrayWithHoles(</span>arr) { <span class="cstat-no" title="statement not covered" >if (Array.isArray(arr)) <span class="cstat-no" title="statement not covered" >return arr; </span></span>}
+&nbsp;
+var fireEvent = function <span class="fstat-no" title="function not covered" >fireEvent(</span>eventName, eventData) {
+  var selector = <span class="cstat-no" title="statement not covered" >arguments.length &gt; 2 &amp;&amp; arguments[2] !== undefined ? arguments[2] : "";</span>
+  var data = <span class="cstat-no" title="statement not covered" >eventData || null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    var parsedData = <span class="cstat-no" title="statement not covered" >JSON.parse(JSON.stringify(data));</span>
+    var storyBookIframeDocument = <span class="cstat-no" title="statement not covered" >document.getElementById( // the preview is inside a iframe</span>
+    "storybook-preview-iframe").contentWindow.document;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (selector.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >      storyBookIframeDocument.querySelector(selector).dispatchEvent(new CustomEvent(eventName, parsedData));</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      storyBookIframeDocument.dispatchEvent(new CustomEvent(eventName, parsedData));</span>
+    }
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    console.log("Fire not successfull ", error); </span>// eslint-disable-line no-console
+  }
+};
+&nbsp;
+var CustomEventRow = /*#__PURE__*/(0, _react.memo)(<span class="fstat-no" title="function not covered" >fu</span>nction (_ref) {
+  var _ref$selectorDefault = <span class="cstat-no" title="statement not covered" >_ref.selectorDefault,</span>
+      selectorDefault = <span class="cstat-no" title="statement not covered" >_ref$selectorDefault === void 0 ? "" : _ref$selectorDefault,</span>
+      _ref$eventNameDefault = <span class="cstat-no" title="statement not covered" >_ref.eventNameDefault,</span>
+      eventNameDefault = <span class="cstat-no" title="statement not covered" >_ref$eventNameDefault === void 0 ? "" : _ref$eventNameDefault,</span>
+      _ref$eventDataDefault = <span class="cstat-no" title="statement not covered" >_ref.eventDataDefault,</span>
+      eventDataDefault = <span class="cstat-no" title="statement not covered" >_ref$eventDataDefault === void 0 ? "" : _ref$eventDataDefault;</span>
+&nbsp;
+  var _useState = <span class="cstat-no" title="statement not covered" >(0, _react.useState)(false),</span>
+      _useState2 = <span class="cstat-no" title="statement not covered" >_slicedToArray(_useState, 2),</span>
+      displaySelector = <span class="cstat-no" title="statement not covered" >_useState2[0],</span>
+      setDisplaySelector = <span class="cstat-no" title="statement not covered" >_useState2[1];</span>
+&nbsp;
+  var _useState3 = <span class="cstat-no" title="statement not covered" >(0, _react.useState)(selectorDefault),</span>
+      _useState4 = <span class="cstat-no" title="statement not covered" >_slicedToArray(_useState3, 2),</span>
+      selector = <span class="cstat-no" title="statement not covered" >_useState4[0],</span>
+      setSelector = <span class="cstat-no" title="statement not covered" >_useState4[1];</span>
+&nbsp;
+  var _useState5 = <span class="cstat-no" title="statement not covered" >(0, _react.useState)(eventNameDefault),</span>
+      _useState6 = <span class="cstat-no" title="statement not covered" >_slicedToArray(_useState5, 2),</span>
+      eventName = <span class="cstat-no" title="statement not covered" >_useState6[0],</span>
+      setEventName = <span class="cstat-no" title="statement not covered" >_useState6[1];</span>
+&nbsp;
+  var _useState7 = <span class="cstat-no" title="statement not covered" >(0, _react.useState)(eventDataDefault),</span>
+      _useState8 = <span class="cstat-no" title="statement not covered" >_slicedToArray(_useState7, 2),</span>
+      eventData = <span class="cstat-no" title="statement not covered" >_useState8[0],</span>
+      setEventData = <span class="cstat-no" title="statement not covered" >_useState8[1];</span>
+&nbsp;
+  var displaySelectInput = <span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >displaySelectInput(</span>) {</span>
+<span class="cstat-no" title="statement not covered" >    setDisplaySelector(true);</span>
+  };
+&nbsp;
+  var parsedData = <span class="cstat-no" title="statement not covered" >null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  try {</span>
+<span class="cstat-no" title="statement not covered" >    parsedData = eventDataDefault ? JSON.stringify(eventData) : "";</span>
+  } catch (_) {
+<span class="cstat-no" title="statement not covered" >    parsedData = "INVALID JSON";</span>
+  }
+&nbsp;
+  var handleSelectorChange = <span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >handleSelectorChange(</span>event) {</span>
+<span class="cstat-no" title="statement not covered" >    setSelector(event.target.value);</span>
+  };
+&nbsp;
+  var handleEventNameChange = <span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >handleEventNameChange(</span>event) {</span>
+<span class="cstat-no" title="statement not covered" >    setEventName(event.target.value);</span>
+  };
+&nbsp;
+  var handleDataChange = <span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >handleDataChange(</span>event) {</span>
+<span class="cstat-no" title="statement not covered" >    setEventData(event.target.value);</span>
+  };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledInput, {</span>
+    type: "text",
+    value: eventName,
+    onChange: handleEventNameChange
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+    value: parsedData || eventData,
+    onChange: handleDataChange
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false &amp;&amp; selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
+    key: "iconBox"
+  }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
+    icon: "add",
+    onClick: displaySelectInput
+  })), /*#__PURE__*/_react["default"].createElement("span", {
+    key: "selectorText"
+  }, "Add Selektor")] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+    value: selector,
+    onChange: handleSelectorChange
+  }))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
+    primary: true,
+    onClick: function <span class="fstat-no" title="function not covered" >onClick(</span>) {
+<span class="cstat-no" title="statement not covered" >      return fireEvent(eventName, eventData, selector);</span>
+    }
+  }, "send")));
+});
+CustomEventRow.propTypes = {
+  selectorDefault: _propTypes["default"].string,
+  eventNameDefault: _propTypes["default"].string,
+  eventDataDefault: _propTypes["default"].string
+};
+CustomEventRow.defaultProps = {
+  selectorDefault: "",
+  eventNameDefault: "",
+  eventDataDefault: ""
+};
+var _default = CustomEventRow;
+exports["default"] = _default;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
+                at Wed Oct 27 2021 12:17:42 GMT+0200 (Mitteleuropäische Sommerzeit)
+            </div>
+        </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -39,7 +39,7 @@
   "scripts": {
     "dev": "nodemon --ignore dist --exec npm run build",
     "lint": "eslint src --ext .js,.jsx --fix",
-    "build": "babel ./src --out-dir ./dist",
+    "build": "babel ./src --out-dir ./dist --ignore '**/*.spec.jsx'",
     "test": "jest --coverage"
   },
   "files": [
@@ -60,6 +60,8 @@
     "@babel/cli": "^7.15.7",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
+    "@storybook/api": "^6.3.12",
+    "@storybook/components": "^6.3.12",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.25.2",
@@ -70,13 +72,9 @@
     "nodemon": "^2.0.14"
   },
   "peerDependencies": {
-    "@storybook/addon-docs": "^6.3.9",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "storybook": "^6.3.12"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/setupTest.js"
-    ]
-  }
+  "jest": {}
 }

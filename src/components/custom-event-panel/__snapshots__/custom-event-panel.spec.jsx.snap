@@ -1,3 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CustomEventPanel should render 1`] = `ShallowWrapper {}`;
+exports[`CustomEventPanel should render 1`] = `
+<div>
+  <div>
+    <thead>
+      <tr>
+        <th>
+          EventName
+        </th>
+        <th>
+          Data
+        </th>
+        <th>
+          (opt.) Selector
+        </th>
+        <th>
+           
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <style
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": ".css-12d6kl5{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0 none;display:block;margin:0;background:#FFFFFF;padding:6px 10px;font-size:13px;position:relative;color:#333333;box-shadow:rgb(0 0 0 / 10%) 0 0 0 1px inset;border-radius:4px;line-height:20px;-webkit-flex:1;-ms-flex:1;flex:1;text-align:left;overflow:visible;max-height:400px;}",
+              }
+            }
+            data-emotion-css="12d6kl5"
+          />
+          <input
+            className="css-12d6kl5"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </td>
+        <td>
+          <style
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": ".css-12d6kl5{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:0 none;display:block;margin:0;background:#FFFFFF;padding:6px 10px;font-size:13px;position:relative;color:#333333;box-shadow:rgb(0 0 0 / 10%) 0 0 0 1px inset;border-radius:4px;line-height:20px;-webkit-flex:1;-ms-flex:1;flex:1;text-align:left;overflow:visible;max-height:400px;}",
+              }
+            }
+            data-emotion-css="12d6kl5"
+          />
+          <textarea
+            className="css-12d6kl5"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td>
+          <style
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": ".css-k008qs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}",
+              }
+            }
+            data-emotion-css="k008qs"
+          />
+          <div
+            className="css-k008qs"
+          >
+            <style
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": ".css-11elljy{width:25px;height:25px;}",
+                }
+              }
+              data-emotion-css="11elljy"
+            />
+            <div
+              className="css-11elljy"
+            >
+              <div />
+            </div>
+            <span>
+              Add Selektor
+            </span>
+          </div>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            send
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <style
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": ".css-k008qs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}",
+              }
+            }
+            data-emotion-css="k008qs"
+          />
+          <div
+            className="css-k008qs"
+            onClick={[Function]}
+          >
+            <style
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": ".css-11elljy{width:25px;height:25px;}",
+                }
+              }
+              data-emotion-css="11elljy"
+            />
+            <div
+              className="css-11elljy"
+            >
+              <div />
+            </div>
+            <span>
+              Add new Line
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </div>
+</div>
+`;
