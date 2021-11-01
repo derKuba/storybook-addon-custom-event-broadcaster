@@ -1,10 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-const mockedModule = ({ children }) => {
-  return <div>{children}</div>;
-};
-
 jest.mock("@storybook/api", () => ({
   __esModule: true,
   useParameter: () => null,

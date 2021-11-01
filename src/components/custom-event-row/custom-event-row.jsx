@@ -13,10 +13,11 @@ const fireEvent = (eventName, eventData, selector = "") => {
   try {
     const parsedData = JSON.parse(JSON.stringify(data));
 
-    const storyBookIframeDocument = document.getElementById( // the preview is inside a iframe
+    const storyBookIframeDocument = document.getElementById(
+      // the preview is inside a iframe
       "storybook-preview-iframe"
     ).contentWindow.document;
-
+   
     if (selector.length > 0) {
       storyBookIframeDocument
         .querySelector(selector)

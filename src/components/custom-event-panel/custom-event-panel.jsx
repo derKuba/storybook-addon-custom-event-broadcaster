@@ -45,7 +45,7 @@ const CustomEventPanel = () => {
         </thead>
         <tbody>
           {renderTableRows(customEventPanelParameterData)}
-          {[...Array(additionalRows).keys()].map((item, index) => (
+          {[...Array(additionalRows).keys()].map((_, index) => (
             <CustomEventRow
               key={
                 `addRow_${index + 1}` // eslint-disable-line react/no-array-index-key
