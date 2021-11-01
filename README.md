@@ -17,7 +17,7 @@ This addon adds a tab to the addon panel. It has a set of input fields. The inpu
 npm install storybook-addon-custom-event-broadcaster
 ```
 
-Add addon to the storybook configuration:
+Add the addon to the storybook configuration:
 
 ```bash
 // .storybook/main.js
@@ -25,31 +25,35 @@ module.exports = {
  ...
   addons: [
    ...
-    'storybook-addon-custom-event-broadcaster/dist/presets.js',0
+    'storybook-addon-custom-event-broadcaster',0
   ],
 };
 ```
 
 #### Configuration in your story
 
-// \*.stories.jsx
+To configure your story you need to add an _customEventPanel_-object to the parameters section. it has one required parameter _eventName_ and two optional parameters _eventData_,_selector_. It is analogous to the three input fields.
+
+If the _selector_-field is empty, the event will be fired on the document-object of the page. if it is filled it will fire the event on the selected node.
 
 ```js
+// \*.stories.jsx
+// example configuration
 export default {
   title: "Content/Wizards",
   parameters: {
     customEventPanel: [
       {
-        eventName: "wizard:next",
+        eventName: "my:event",
         eventData: {
           opt: 23,
         },
-        selector: "mein.selektor",
+        selector: ".selector",
       },
       {
-        eventName: "wizard:previous",
+        eventName: "my:otherevent",
         eventData: {
-          bla: 23,
+          foo: 23,
         },
       },
     ],
@@ -59,3 +63,5 @@ export default {
 ```
 
 #### Plugin in Action
+
+I have a example project using this addon on https://github.com/derKuba/stenciljs-tutorial/tree/main/component-lib.
