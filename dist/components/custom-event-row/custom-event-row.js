@@ -35,17 +35,25 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var fireEvent = function fireEvent(eventName, eventData) {
   var selector = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
   var data = eventData || null;
 
   try {
-    var parsedData = JSON.parse(JSON.stringify(data));
+    var parsedData = JSON.parse(data);
     var storyBookIframeDocument = document.getElementById( // the preview is inside a iframe
     "storybook-preview-iframe").contentWindow.document;
 
     if (selector.length > 0) {
-      storyBookIframeDocument.querySelector(selector).dispatchEvent(new CustomEvent(eventName, parsedData));
+      storyBookIframeDocument.querySelector(selector).dispatchEvent(new CustomEvent(eventName, {
+        detail: _objectSpread({}, parsedData)
+      }));
     } else {
       storyBookIframeDocument.dispatchEvent(new CustomEvent(eventName, parsedData));
     }
@@ -60,7 +68,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
       _ref$eventNameDefault = _ref.eventNameDefault,
       eventNameDefault = _ref$eventNameDefault === void 0 ? "" : _ref$eventNameDefault,
       _ref$eventDataDefault = _ref.eventDataDefault,
-      eventDataDefault = _ref$eventDataDefault === void 0 ? "" : _ref$eventDataDefault;
+      eventDataDefault = _ref$eventDataDefault === void 0 ? {} : _ref$eventDataDefault;
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -86,14 +94,6 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     setDisplaySelector(true);
   };
 
-  var parsedData = null;
-
-  try {
-    parsedData = eventDataDefault ? JSON.stringify(eventData) : "";
-  } catch (_) {
-    parsedData = "INVALID JSON";
-  }
-
   var handleSelectorChange = function handleSelectorChange(event) {
     setSelector(event.target.value);
   };
@@ -111,16 +111,18 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     value: eventName,
     onChange: handleEventNameChange
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
-    value: parsedData || eventData,
+    value: eventData,
     onChange: handleDataChange
-  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, _defineProperty({
     key: "iconBox"
-  }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
+  }, "key", "icon"), /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add",
     onClick: displaySelectInput
-  })), /*#__PURE__*/_react["default"].createElement("span", {
+  })), /*#__PURE__*/_react["default"].createElement(_boxes.IconLabelBox, {
+    key: "icon_label"
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     key: "selectorText"
-  }, "Add Selektor")] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+  }, "Add Selektor"))] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
     value: selector,
     onChange: handleSelectorChange
   }))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
@@ -132,7 +134,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
 });
 CustomEventRow.propTypes = {
   selectorDefault: _propTypes["default"].string,
-  eventNameDefault: _propTypes["default"].string,
+  eventNameDefault: _propTypes["default"].string.isRequired,
   eventDataDefault: _propTypes["default"].string
 };
 CustomEventRow.defaultProps = {
