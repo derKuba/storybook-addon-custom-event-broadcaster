@@ -8,11 +8,7 @@
     "custom-events",
     "debug"
   ],
-  "author": {
-    "name": "Jacob Pawlik",
-    "email": "kuba@derkuba.de",
-    "url": "http://derkuba.de"
-  },
+  "author": "Jacob Pawlik <kuba@derkuba.de> (http://derkuba.de)",
   "contributors": [
     "Michael Mayer <michael_boese@hotmail.de>",
     "Barthomoläus Kaminski <bart@tranquille.de>"
@@ -82,5 +78,6 @@
       "html"
     ],
     "testEnvironment": "jsdom"
-  }
+  },
+  "dependencies": {}
 }
