@@ -23,13 +23,9 @@ const fireEvent = (eventName, eventData, selector = "") => {
     ).contentWindow.document;
 
     if (selector.length > 0) {
-      storyBookIframeDocument.querySelector(selector).dispatchEvent(
-        new CustomEvent(eventName, {
-          detail: {
-            ...parsedData,
-          },
-        })
-      );
+      storyBookIframeDocument
+        .querySelector(selector)
+        .dispatchEvent(new CustomEvent(eventName, parsedData));
     } else {
       storyBookIframeDocument.dispatchEvent(
         new CustomEvent(eventName, parsedData)

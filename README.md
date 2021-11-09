@@ -25,7 +25,7 @@ module.exports = {
  ...
   addons: [
    ...
-    'storybook-addon-custom-event-broadcaster',
+    'storybook-addon-custom-event-broadcaster/dist',
   ],
 };
 ```
