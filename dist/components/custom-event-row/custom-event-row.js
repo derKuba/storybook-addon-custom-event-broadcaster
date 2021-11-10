@@ -23,6 +23,8 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -40,7 +42,7 @@ var fireEvent = function fireEvent(eventName, eventData) {
   var data = eventData || null;
 
   try {
-    var parsedData = JSON.parse(JSON.stringify(data));
+    var parsedData = JSON.parse(data);
     var storyBookIframeDocument = document.getElementById( // the preview is inside a iframe
     "storybook-preview-iframe").contentWindow.document;
 
@@ -60,7 +62,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
       _ref$eventNameDefault = _ref.eventNameDefault,
       eventNameDefault = _ref$eventNameDefault === void 0 ? "" : _ref$eventNameDefault,
       _ref$eventDataDefault = _ref.eventDataDefault,
-      eventDataDefault = _ref$eventDataDefault === void 0 ? "" : _ref$eventDataDefault;
+      eventDataDefault = _ref$eventDataDefault === void 0 ? {} : _ref$eventDataDefault;
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -86,14 +88,6 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     setDisplaySelector(true);
   };
 
-  var parsedData = null;
-
-  try {
-    parsedData = eventDataDefault ? JSON.stringify(eventData) : "";
-  } catch (_) {
-    parsedData = "INVALID JSON";
-  }
-
   var handleSelectorChange = function handleSelectorChange(event) {
     setSelector(event.target.value);
   };
@@ -111,16 +105,18 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     value: eventName,
     onChange: handleEventNameChange
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
-    value: parsedData || eventData,
+    value: eventData,
     onChange: handleDataChange
-  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, _defineProperty({
     key: "iconBox"
-  }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
+  }, "key", "icon"), /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add",
     onClick: displaySelectInput
-  })), /*#__PURE__*/_react["default"].createElement("span", {
+  })), /*#__PURE__*/_react["default"].createElement(_boxes.IconLabelBox, {
+    key: "icon_label"
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     key: "selectorText"
-  }, "Add Selektor")] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+  }, "Add Selektor"))] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
     value: selector,
     onChange: handleSelectorChange
   }))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
@@ -132,7 +128,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
 });
 CustomEventRow.propTypes = {
   selectorDefault: _propTypes["default"].string,
-  eventNameDefault: _propTypes["default"].string,
+  eventNameDefault: _propTypes["default"].string.isRequired,
   eventDataDefault: _propTypes["default"].string
 };
 CustomEventRow.defaultProps = {

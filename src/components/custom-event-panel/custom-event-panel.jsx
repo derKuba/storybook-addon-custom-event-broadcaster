@@ -4,22 +4,32 @@ import { useParameter } from "@storybook/api";
 import { TableWrapper, ResetWrapper, Icons } from "@storybook/components";
 
 import CustomEventRow from "../custom-event-row/custom-event-row";
-import { FlexedBox, IconBox } from "../../styled-components/boxes";
+import {
+  FlexedBox,
+  IconBox,
+  IconLabelBox,
+} from "../../styled-components/boxes";
 
 const renderTableRows = (_parameterData) => {
   if (_parameterData !== null && _parameterData.length > 0) {
-    const rows = _parameterData.map((row, index) => (
-      <CustomEventRow
-        key={`${row.selector}__${index}`} // eslint-disable-line react/no-array-index-key
-        selectorDefault={row.selector}
-        eventNameDefault={row.eventName}
-        eventDataDefault={row.eventData}
-      />
-    ));
+    const rows = _parameterData.map((row, index) => {
+      const attributes = {
+        selectorDefault: row.selector,
+        eventNameDefault: row.eventName,
+        eventDataDefault: JSON.stringify(row.eventData) || "",
+      };
+
+      return (
+        <CustomEventRow
+          key={`key__${row.eventName}__${index}`} // eslint-disable-line react/no-array-index-key
+          {...attributes}
+        />
+      );
+    });
     return rows;
   }
 
-  return <CustomEventRow />;
+  return <CustomEventRow key="single" />;
 };
 
 const CustomEventPanel = () => {
@@ -55,10 +65,13 @@ const CustomEventPanel = () => {
           <tr>
             <td>
               <FlexedBox onClick={addNewRow}>
-                <IconBox>
+                <IconBox key="iconBox" key="icon">
                   <Icons icon="add" />
                 </IconBox>
-                <span>Add new Line</span>
+
+                <IconLabelBox key="icon_label">
+                  <span key="selectorText">Add new line</span>
+                </IconLabelBox>
               </FlexedBox>
             </td>
           </tr>

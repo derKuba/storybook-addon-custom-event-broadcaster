@@ -25,7 +25,7 @@ module.exports = {
  ...
   addons: [
    ...
-    'storybook-addon-custom-event-broadcaster',0
+    'storybook-addon-custom-event-broadcaster/dist',
   ],
 };
 ```
@@ -38,11 +38,14 @@ If the _selector_-field is empty, the event will be fired on the document-object
 
 ```js
 // \*.stories.jsx
-// example configuration
+// example configuration of 3 lines
 export default {
-  title: "Content/Wizards",
+  title: "Content/MyStory",
   parameters: {
     customEventPanel: [
+      {
+         eventName: "event:example",
+      }
       {
         eventName: "my:event",
         eventData: {
@@ -63,5 +66,7 @@ export default {
 ```
 
 #### Plugin in Action
+
+![usage example](./usage_example.gif "Usage Example")
 
 I have a example project using this addon on https://github.com/derKuba/stenciljs-tutorial/tree/main/component-lib.

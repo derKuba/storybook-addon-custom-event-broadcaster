@@ -23,6 +23,8 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -43,22 +45,28 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 var renderTableRows = function renderTableRows(_parameterData) {
   if (_parameterData !== null && _parameterData.length > 0) {
     var rows = _parameterData.map(function (row, index) {
-      return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], {
-        key: "".concat(row.selector, "__").concat(index) // eslint-disable-line react/no-array-index-key
-        ,
+      var attributes = {
         selectorDefault: row.selector,
         eventNameDefault: row.eventName,
-        eventDataDefault: row.eventData
-      });
+        eventDataDefault: JSON.stringify(row.eventData) || ""
+      };
+      return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], _extends({
+        key: "key__".concat(row.eventName, "__").concat(index) // eslint-disable-line react/no-array-index-key
+
+      }, attributes));
     });
 
     return rows;
   }
 
-  return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], null);
+  return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], {
+    key: "single"
+  });
 };
 
 var CustomEventPanel = function CustomEventPanel() {
@@ -83,9 +91,15 @@ var CustomEventPanel = function CustomEventPanel() {
     });
   }), /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, {
     onClick: addNewRow
-  }, /*#__PURE__*/_react["default"].createElement(_boxes.IconBox, null, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
+  }, /*#__PURE__*/_react["default"].createElement(_boxes.IconBox, _defineProperty({
+    key: "iconBox"
+  }, "key", "icon"), /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add"
-  })), /*#__PURE__*/_react["default"].createElement("span", null, "Add new Line")))))));
+  })), /*#__PURE__*/_react["default"].createElement(_boxes.IconLabelBox, {
+    key: "icon_label"
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    key: "selectorText"
+  }, "Add new line"))))))));
 };
 
 var _default = CustomEventPanel;

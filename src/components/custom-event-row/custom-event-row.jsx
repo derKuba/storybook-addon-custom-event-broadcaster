@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 
 import { Button, Icons } from "@storybook/components";
 
-import { FlexedBox, IconBox } from "../../styled-components/boxes";
+import {
+  FlexedBox,
+  IconBox,
+  IconLabelBox,
+} from "../../styled-components/boxes";
 
 import { StyledInput, StyledTextarea } from "../../styled-components/input";
 
@@ -11,13 +15,13 @@ const fireEvent = (eventName, eventData, selector = "") => {
   const data = eventData || null;
 
   try {
-    const parsedData = JSON.parse(JSON.stringify(data));
+    const parsedData = JSON.parse(data);
 
     const storyBookIframeDocument = document.getElementById(
       // the preview is inside a iframe
       "storybook-preview-iframe"
     ).contentWindow.document;
-   
+
     if (selector.length > 0) {
       storyBookIframeDocument
         .querySelector(selector)
@@ -33,7 +37,7 @@ const fireEvent = (eventName, eventData, selector = "") => {
 };
 
 const CustomEventRow = memo(
-  ({ selectorDefault = "", eventNameDefault = "", eventDataDefault = "" }) => {
+  ({ selectorDefault = "", eventNameDefault = "", eventDataDefault = {} }) => {
     const [displaySelector, setDisplaySelector] = useState(false);
     const [selector, setSelector] = useState(selectorDefault);
     const [eventName, setEventName] = useState(eventNameDefault);
@@ -42,13 +46,6 @@ const CustomEventRow = memo(
     const displaySelectInput = () => {
       setDisplaySelector(true);
     };
-
-    let parsedData = null;
-    try {
-      parsedData = eventDataDefault ? JSON.stringify(eventData) : "";
-    } catch (_) {
-      parsedData = "INVALID JSON";
-    }
 
     const handleSelectorChange = (event) => {
       setSelector(event.target.value);
@@ -72,10 +69,7 @@ const CustomEventRow = memo(
           />
         </td>
         <td>
-          <StyledTextarea
-            value={parsedData || eventData}
-            onChange={handleDataChange}
-          />
+          <StyledTextarea value={eventData} onChange={handleDataChange} />
         </td>
         <td>
           <FlexedBox>
@@ -109,7 +103,7 @@ const CustomEventRow = memo(
 
 CustomEventRow.propTypes = {
   selectorDefault: PropTypes.string,
-  eventNameDefault: PropTypes.string,
+  eventNameDefault: PropTypes.string.isRequired,
   eventDataDefault: PropTypes.string,
 };
 
