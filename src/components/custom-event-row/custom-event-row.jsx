@@ -75,12 +75,10 @@ const CustomEventRow = memo(
           <FlexedBox>
             {displaySelector === false && selector.length === 0 ? (
               [
-                <IconBox key="iconBox" key="icon">
+                <IconBox key="iconBox" className="tooltip">
                   <Icons icon="add" onClick={displaySelectInput} />
+                  <span tooltip="message">Add Selektor</span>
                 </IconBox>,
-                <IconLabelBox key="icon_label">
-                  <span key="selectorText">Add Selektor</span>
-                </IconLabelBox>,
               ]
             ) : (
               <StyledTextarea
