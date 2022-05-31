@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 
 import { Button, Icons } from "@storybook/components";
 
-import {
-  FlexedBox,
-  IconBox,
-  IconLabelBox,
-} from "../../styled-components/boxes";
+import { FlexedBox, IconBox } from "../../styled-components/boxes";
 
 import { StyledInput, StyledTextarea } from "../../styled-components/input";
 
@@ -109,7 +105,6 @@ CustomEventRow.propTypes = {
 
 CustomEventRow.defaultProps = {
   selectorDefault: "",
-  eventNameDefault: "",
   eventDataDefault: "",
 };
 

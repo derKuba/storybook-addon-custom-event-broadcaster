@@ -1,4 +1,4 @@
-import { styled } from "@storybook/theming";
+import { styled } from '@storybook/theming';
 
 export const FlexedBox = styled.div({
   display: 'flex',
@@ -9,7 +9,6 @@ export const FlexedBox = styled.div({
 export const IconBox = styled.div`
   width: 18px;
   height: 18px;
-
   &.tooltip {
     position: relative;
     &:hover {
@@ -25,7 +24,7 @@ export const IconBox = styled.div`
       position: absolute;
       opacity: 0;
       visibility: hidden;
-      font-size: .75rem;
+      font-size: 0.75rem;
       line-height: 1;
       min-width: 3em;
       max-width: 21em;
@@ -36,7 +35,6 @@ export const IconBox = styled.div`
       z-index: 1001;
       left: 22px;
       top: -6px;
-
     }
   }
 `;

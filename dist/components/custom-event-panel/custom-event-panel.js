@@ -95,11 +95,7 @@ var CustomEventPanel = function CustomEventPanel() {
     key: "iconBox"
   }, "key", "icon"), /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add"
-  })), /*#__PURE__*/_react["default"].createElement(_boxes.IconLabelBox, {
-    key: "icon_label"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    key: "selectorText"
-  }, "Add new line"))))))));
+  }))))))));
 };
 
 var _default = CustomEventPanel;

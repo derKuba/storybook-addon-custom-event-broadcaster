@@ -1,11 +1,11 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-jest.mock("@storybook/components", () => ({
+import CustomEventRow from './custom-event-row';
+
+jest.mock('@storybook/components', () => ({
   __esModule: true,
-  Icons: ({ children }) => {
-    return <div>{children}</div>;
-  },
+  Icons: ({ children }) => <div>{children}</div>,
   Button: ({ onClick, children }) => {
     console.log(onClick, children);
     return <button onClick={onClick}>{children}</button>;
@@ -24,42 +24,40 @@ global.document.getElementById = () => ({
   },
 });
 
-import CustomEventRow from "./custom-event-row";
-
-describe("CustomEventRow", () => {
-  test("should render", () => {
+describe('CustomEventRow', () => {
+  test('should render', () => {
     const tree = renderer
       .create(
         <CustomEventRow
-          selectorDefault={".test"}
-          eventNameDefault={"test:event"}
+          selectorDefault=".test"
+          eventNameDefault="test:event"
           eventDataDefault={null}
-        />
+        />,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  test("should click the button and send event with selector", () => {
+  test('should click the button and send event with selector', () => {
     const tree = renderer.create(
       <CustomEventRow
-        selectorDefault={".test"}
-        eventNameDefault={"test:event"}
+        selectorDefault=".test"
+        eventNameDefault="test:event"
         eventDataDefault={null}
-      />
+      />,
     );
 
-    tree.root.findByType("button").props.onClick();
+    tree.root.findByType('button').props.onClick();
 
     expect(dispatchMock).toBeCalled();
   });
 
-  test("should click the button and send event without selector", () => {
+  test('should click the button and send event without selector', () => {
     const tree = renderer.create(
-      <CustomEventRow eventNameDefault={"test:event"} eventDataDefault={null} />
+      <CustomEventRow eventNameDefault="test:event" eventDataDefault={null} />,
     );
 
-    tree.root.findByType("button").props.onClick();
+    tree.root.findByType('button').props.onClick();
 
     expect(dispatchMock).toBeCalled();
   });

@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { useParameter } from "@storybook/api";
+import React, { useState } from 'react';
+import { useParameter } from '@storybook/api';
 
-import { TableWrapper, ResetWrapper, Icons } from "@storybook/components";
+import { TableWrapper, ResetWrapper, Icons } from '@storybook/components';
 
-import CustomEventRow from "../custom-event-row/custom-event-row";
-import {
-  FlexedBox,
-  IconBox,
-  IconLabelBox,
-} from "../../styled-components/boxes";
+import CustomEventRow from '../custom-event-row/custom-event-row';
+import { FlexedBox, IconBox } from '../../styled-components/boxes';
 
 const renderTableRows = (_parameterData) => {
   if (_parameterData !== null && _parameterData.length > 0) {
@@ -16,7 +12,7 @@ const renderTableRows = (_parameterData) => {
       const attributes = {
         selectorDefault: row.selector,
         eventNameDefault: row.eventName,
-        eventDataDefault: JSON.stringify(row.eventData) || "",
+        eventDataDefault: JSON.stringify(row.eventData) || '',
       };
 
       return (
@@ -32,8 +28,8 @@ const renderTableRows = (_parameterData) => {
   return <CustomEventRow key="single" />;
 };
 
-const CustomEventPanel = () => {
-  const customEventPanelParameterData = useParameter("customEventPanel", null);
+function CustomEventPanel() {
+  const customEventPanelParameterData = useParameter('customEventPanel', null);
 
   const [additionalRows, setAdditionalRows] = useState(0);
 
@@ -65,13 +61,9 @@ const CustomEventPanel = () => {
           <tr>
             <td>
               <FlexedBox onClick={addNewRow}>
-                <IconBox key="iconBox" key="icon">
+                <IconBox key="iconBox">
                   <Icons icon="add" />
                 </IconBox>
-
-                <IconLabelBox key="icon_label">
-                  <span key="selectorText">Add new line</span>
-                </IconLabelBox>
               </FlexedBox>
             </td>
           </tr>
@@ -79,6 +71,6 @@ const CustomEventPanel = () => {
       </TableWrapper>
     </ResetWrapper>
   );
-};
+}
 
 export default CustomEventPanel;

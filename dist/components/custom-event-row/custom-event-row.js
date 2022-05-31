@@ -23,8 +23,6 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -107,15 +105,14 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
   })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
     value: eventData,
     onChange: handleDataChange
-  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, _defineProperty({
-    key: "iconBox"
-  }, "key", "icon"), /*#__PURE__*/_react["default"].createElement(_components.Icons, {
+  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
+    key: "iconBox",
+    className: "tooltip"
+  }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add",
     onClick: displaySelectInput
-  })), /*#__PURE__*/_react["default"].createElement(_boxes.IconLabelBox, {
-    key: "icon_label"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    key: "selectorText"
+  }), /*#__PURE__*/_react["default"].createElement("span", {
+    tooltip: "message"
   }, "Add Selektor"))] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
     value: selector,
     onChange: handleSelectorChange
