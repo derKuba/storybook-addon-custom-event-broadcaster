@@ -130,7 +130,6 @@ CustomEventRow.propTypes = {
 };
 CustomEventRow.defaultProps = {
   selectorDefault: "",
-  eventNameDefault: "",
   eventDataDefault: ""
 };
 var _default = CustomEventRow;

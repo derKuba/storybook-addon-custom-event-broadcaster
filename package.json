@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-custom-event-broadcaster",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "storybook addon for broadcasting custom events",
   "main": "dist/preset.js",
   "keywords": [

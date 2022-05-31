@@ -23,8 +23,6 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -53,7 +51,7 @@ var renderTableRows = function renderTableRows(_parameterData) {
       var attributes = {
         selectorDefault: row.selector,
         eventNameDefault: row.eventName,
-        eventDataDefault: JSON.stringify(row.eventData) || ""
+        eventDataDefault: JSON.stringify(row.eventData) || ''
       };
       return /*#__PURE__*/_react["default"].createElement(_customEventRow["default"], _extends({
         key: "key__".concat(row.eventName, "__").concat(index) // eslint-disable-line react/no-array-index-key
@@ -69,8 +67,8 @@ var renderTableRows = function renderTableRows(_parameterData) {
   });
 };
 
-var CustomEventPanel = function CustomEventPanel() {
-  var customEventPanelParameterData = (0, _api.useParameter)("customEventPanel", null);
+function CustomEventPanel() {
+  var customEventPanelParameterData = (0, _api.useParameter)('customEventPanel', null);
 
   var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -91,12 +89,12 @@ var CustomEventPanel = function CustomEventPanel() {
     });
   }), /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, {
     onClick: addNewRow
-  }, /*#__PURE__*/_react["default"].createElement(_boxes.IconBox, _defineProperty({
+  }, /*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
     key: "iconBox"
-  }, "key", "icon"), /*#__PURE__*/_react["default"].createElement(_components.Icons, {
+  }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
     icon: "add"
   }))))))));
-};
+}
 
 var _default = CustomEventPanel;
 exports["default"] = _default;

@@ -12,9 +12,9 @@ var _templateObject;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var FlexedBox = _theming.styled.div({
-  display: "flex",
-  justifyContent: "flex-start",
-  alignItems: "center"
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center'
 });
 
 exports.FlexedBox = FlexedBox;
