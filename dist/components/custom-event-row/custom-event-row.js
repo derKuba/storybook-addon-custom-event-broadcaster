@@ -125,7 +125,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
 });
 CustomEventRow.propTypes = {
   selectorDefault: _propTypes["default"].string,
-  eventNameDefault: _propTypes["default"].string.isRequired,
+  eventNameDefault: _propTypes["default"].string,
   eventDataDefault: _propTypes["default"].string
 };
 CustomEventRow.defaultProps = {

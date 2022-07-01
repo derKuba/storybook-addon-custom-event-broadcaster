@@ -99,7 +99,7 @@ const CustomEventRow = memo(
 
 CustomEventRow.propTypes = {
   selectorDefault: PropTypes.string,
-  eventNameDefault: PropTypes.string.isRequired,
+  eventNameDefault: PropTypes.string,
   eventDataDefault: PropTypes.string,
 };
 
