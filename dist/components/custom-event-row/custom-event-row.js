@@ -17,6 +17,8 @@ var _boxes = require("../../styled-components/boxes");
 
 var _input = require("../../styled-components/input");
 
+var _table = require("../../styled-components/table");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -98,14 +100,14 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
     setEventData(event.target.value);
   };
 
-  return /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledInput, {
+  return /*#__PURE__*/_react["default"].createElement(_table.StyledTableRow, null, /*#__PURE__*/_react["default"].createElement(_table.StyledTableCellFirst, null, /*#__PURE__*/_react["default"].createElement(_input.StyledInput, {
     type: "text",
     value: eventName,
     onChange: handleEventNameChange
-  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
+  })), /*#__PURE__*/_react["default"].createElement(_table.StyledTableCell, null, /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
     value: eventData,
     onChange: handleDataChange
-  })), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
+  })), /*#__PURE__*/_react["default"].createElement(_table.StyledTableCell, null, /*#__PURE__*/_react["default"].createElement(_boxes.FlexedBox, null, displaySelector === false && selector.length === 0 ? [/*#__PURE__*/_react["default"].createElement(_boxes.IconBox, {
     key: "iconBox",
     className: "tooltip"
   }, /*#__PURE__*/_react["default"].createElement(_components.Icons, {
@@ -116,7 +118,7 @@ var CustomEventRow = /*#__PURE__*/(0, _react.memo)(function (_ref) {
   }, "Add Selektor"))] : /*#__PURE__*/_react["default"].createElement(_input.StyledTextarea, {
     value: selector,
     onChange: handleSelectorChange
-  }))), /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
+  }))), /*#__PURE__*/_react["default"].createElement(_table.StyledTableCell, null, /*#__PURE__*/_react["default"].createElement(_components.Button, {
     primary: true,
     onClick: function onClick() {
       return fireEvent(eventName, eventData, selector);
