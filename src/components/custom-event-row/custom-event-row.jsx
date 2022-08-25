@@ -6,6 +6,11 @@ import { Button, Icons } from "@storybook/components";
 import { FlexedBox, IconBox } from "../../styled-components/boxes";
 
 import { StyledInput, StyledTextarea } from "../../styled-components/input";
+import {
+  StyledTableRow,
+  StyledTableCell,
+  StyledTableCellFirst,
+} from "../../styled-components/table";
 
 const fireEvent = (eventName, eventData, selector = "") => {
   const data = eventData || null;
@@ -56,18 +61,18 @@ const CustomEventRow = memo(
     };
 
     return (
-      <tr>
-        <td>
+      <StyledTableRow>
+        <StyledTableCellFirst>
           <StyledInput
             type="text"
             value={eventName}
             onChange={handleEventNameChange}
           />
-        </td>
-        <td>
+        </StyledTableCellFirst>
+        <StyledTableCell>
           <StyledTextarea value={eventData} onChange={handleDataChange} />
-        </td>
-        <td>
+        </StyledTableCell>
+        <StyledTableCell>
           <FlexedBox>
             {displaySelector === false && selector.length === 0 ? (
               [
@@ -83,16 +88,16 @@ const CustomEventRow = memo(
               />
             )}
           </FlexedBox>
-        </td>
-        <td>
+        </StyledTableCell>
+        <StyledTableCell>
           <Button
             primary
             onClick={() => fireEvent(eventName, eventData, selector)}
           >
             send
           </Button>
-        </td>
-      </tr>
+        </StyledTableCell>
+      </StyledTableRow>
     );
   }
 );
