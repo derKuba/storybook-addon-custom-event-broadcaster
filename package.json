@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-custom-event-broadcaster",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "storybook addon for broadcasting custom events",
   "main": "dist/preset.js",
   "keywords": [
@@ -11,8 +11,7 @@
   ],
   "author": "Jacob Pawlik <jacob@derkuba.de> (http://derkuba.de)",
   "contributors": [
-    "Michael Mayer <michael_boese@hotmail.de>",
-    "Barthomoläus Kaminski <bart@tranquille.de>"
+    "Michael Mayer <michael_boese@hotmail.de>"
   ],
   "storybook": {
     "displayName": "Custom Events Broadcaster",
