@@ -44,8 +44,8 @@ export default {
   parameters: {
     customEventPanel: [
       {
-         eventName: "event:example",
-      }
+        eventName: "event:example",
+      },
       {
         eventName: "my:event",
         eventData: {
@@ -70,3 +70,14 @@ export default {
 ![usage example](./usage_example.gif "Usage Example")
 
 I have a example project using this addon on https://github.com/derKuba/stenciljs-tutorial/tree/main/component-lib.
+
+#### Development scripts
+
+- `npm  start` runs babel in watch mode and starts Storybook
+- `npm run build` build and package your addon code
+
+##### Switch from TypeScript to JavaScript
+
+Don't want to use TypeScript? We offer a handy eject command: `npm run eject-ts`
+
+This will convert all code to JS. It is a destructive process, so we recommended running this before you start writing any code.
