@@ -8,7 +8,7 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators
  */
-import type { Renderer, ProjectAnnotations } from "@storybook/types";
+import type { ProjectAnnotations, Renderer } from "storybook/internal/types";
 import { PARAM_KEY } from "./constants";
 
 /**
