@@ -1,35 +1,29 @@
 {
   "name": "storybook-addon-custom-event-broadcaster",
-  "version": "2.1.0",
+  "version": "0.0.0",
   "description": "storybook addon for broadcasting custom events",
   "keywords": [
-    "storybook-addons",
-    "custom-events",
-    "code",
-    "debug"
+    "storybook-addon"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/derKuba/storybook-custom-event-broadcaster.git"
   },
-  "author": "jacob pawlik <jacob@derkuba.de>",
-  "contributors": [
-    "Michael Mayer <michael_boese@hotmail.de>"
-  ],
   "license": "MIT",
+  "author": "jacob pawlik <jacob@derkuba.de>",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "default": "./dist/index.js"
     },
     "./preview": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/preview.js",
-      "require": "./dist/preview.cjs"
+      "types": "./dist/preview.d.ts",
+      "default": "./dist/preview.js"
     },
-    "./preset": "./dist/preset.cjs",
+    "./preset": "./dist/preset.js",
     "./manager": "./dist/manager.js",
+    "./manager-helpers": "./dist/manager-helpers.js",
     "./package.json": "./package.json"
   },
   "files": [
@@ -38,87 +32,80 @@
     "*.js",
     "*.d.ts"
   ],
-  "type": "module",
   "scripts": {
+    "prebuild": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
     "build": "tsup",
+    "build-storybook": "storybook build",
     "build:watch": "npm run build -- --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p build:watch \"storybook --quiet\"",
+    "eject-ts": "zx scripts/eject-typescript.js",
+    "format": "prettier --write .",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm lint --fix",
     "prerelease": "zx scripts/prepublish-checks.js",
     "release": "npm run build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.js",
+    "start": "run-p build:watch \"storybook --quiet\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "dependencies": {
-    "@storybook/icons": "^1.2.10"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "8.2.9",
-    "@storybook/addon-interactions": "8.2.9",
-    "@storybook/addon-links": "8.2.9",
-    "@storybook/blocks": "8.2.9",
-    "@storybook/react": "8.2.9",
-    "@storybook/react-vite": "8.2.9",
-    "@storybook/test": "8.2.9",
-    "@types/node": "^22.4.1",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "auto": "^11.2.0",
+    "@eslint/js": "^9.36.0",
+    "@storybook/addon-docs": "next",
+    "@storybook/icons": "^1.4.0",
+    "@storybook/react-vite": "next",
+    "@types/node": "^20",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react": "^4.7.0",
+    "auto": "^11.3.0",
     "boxen": "^8.0.1",
-    "dedent": "^1.5.3",
-    "prettier": "^3.3.3",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-storybook": "next",
+    "npm-run-all2": "^8.0.4",
+    "prettier": "^3.6.2",
     "prompts": "^2.4.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "storybook": "8.2.9",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "zx": "^8.1.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "next",
+    "ts-dedent": "^2.2.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.44.1",
+    "vite": "^7.0.5",
+    "zx": "^8.7.1"
   },
   "peerDependencies": {
-    "storybook": "^8.3.0 || 0.0.0-pr-26654-sha-49d01553"
-  },
-  "overrides": {
-    "storybook": "8.2.9"
+    "storybook": "*"
   },
   "publishConfig": {
     "access": "public"
   },
   "bundler": {
-    "exportEntries": [
-      "src/index.ts"
-    ],
     "managerEntries": [
-      "src/manager.tsx"
+      "src/manager.tsx",
+      "src/manager-helpers.tsx"
     ],
     "previewEntries": [
-      "src/preview.ts"
+      "src/preview.ts",
+      "src/index.ts"
     ],
     "nodeEntries": [
       "src/preset.ts"
     ]
   },
   "storybook": {
-    "displayName": "Custom Events Broadcaster",
+    "displayName": "Custom Events Broadcaster"",
     "supportedFrameworks": [
-      "react",
-      "angular",
-      "vue",
-      "solid"
+      ""react"", ""angular"", ""vue"", ""solid""
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
-  "watch": {
-    "build": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": [
-        "js,jsx, ts, tsx"
-      ]
-    }
+  "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
