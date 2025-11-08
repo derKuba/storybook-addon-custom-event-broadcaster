@@ -40,21 +40,21 @@ If the _selector_-field is empty, the event will be fired on the document-object
 // \*.stories.jsx
 // example configuration of 3 lines
 export default {
-  title: "Content/MyStory",
+  title: 'Content/MyStory',
   parameters: {
     customEventPanel: [
       {
-        eventName: "event:example",
+        eventName: 'event:example',
       },
       {
-        eventName: "my:event",
+        eventName: 'my:event',
         eventData: {
           opt: 23,
         },
-        selector: ".selector",
+        selector: '.selector',
       },
       {
-        eventName: "my:otherevent",
+        eventName: 'my:otherevent',
         eventData: {
           foo: 23,
         },
@@ -67,7 +67,7 @@ export default {
 
 #### Plugin in Action
 
-![usage example](./usage_example.gif "Usage Example")
+![usage example](./usage_example.gif 'Usage Example')
 
 I have a example project using this addon on https://github.com/derKuba/stenciljs-tutorial/tree/main/component-lib.
 
