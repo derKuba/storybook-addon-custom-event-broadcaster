@@ -1,8 +1,6 @@
-import React from "react";
-
-import { AddonPanel } from "@storybook/components";
-
-import DerKubaCustomEventPanel from "./components/custom-event-panel/custom-event-panel";
+import React from 'react';
+import { AddonPanel } from 'storybook/internal/components';
+import { CustomEventPanel } from './components/CustomEventPanel';
 
 interface PanelProps {
   active: boolean;
@@ -11,7 +9,7 @@ interface PanelProps {
 export const Panel: React.FC<PanelProps> = (props) => {
   return (
     <AddonPanel {...props}>
-      <DerKubaCustomEventPanel />
+      <CustomEventPanel />
     </AddonPanel>
   );
 };
