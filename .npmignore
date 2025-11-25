@@ -1,0 +1,30 @@
+# Development files
+.storybook/
+src/
+node_modules/
+
+# Build configuration
+tsconfig.json
+tsup.config.ts
+vite.config.ts
+eslint.config.js
+
+# Linting and formatting
+.eslintrc*
+.prettierrc
+.prettierignore
+
+# Version control
+.git/
+.gitignore
+.github/
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+
+# Misc
+usage_example.gif
+.DS_Store

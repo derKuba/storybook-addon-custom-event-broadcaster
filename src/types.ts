@@ -1,4 +1,1 @@
-export interface Result {
-  divs: DOMRect[];
-  styled: DOMRect[];
-}
+// Types file for addon - currently empty but reserved for future types

@@ -1,7 +1,7 @@
 // src/components/CustomEventRow.tsx
 import React, { useState, memo } from 'react';
 import { Button } from 'storybook/internal/components';
-import { AddIcon, TrashIcon } from '@storybook/icons';
+import { AddIcon } from '@storybook/icons';
 import { styled } from 'storybook/theming';
 
 const RowContainer = styled.div`
